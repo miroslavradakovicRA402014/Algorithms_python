@@ -6,8 +6,8 @@ heapSize = 9
 heapfunctions.buildMaxHeap(Arr,heapSize)
 
 print (Arr)
-#heapfunctions.heapSort(Arr,heapSize)
-#print (Arr)
+heapfunctions.heapSort(Arr,heapSize)
+print (Arr)
 
 heapfunctions.heapInsertKey(Arr,10,heapSize)
 el = heapfunctions.heapExtraxtMax(Arr,heapSize)
