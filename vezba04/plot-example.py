@@ -61,7 +61,11 @@ def SecondPlot():
     CreatePlot(input_data, exec_time, algo_name)
 
 
+
+
+
 # Profile functions and create plots
+
 FirstPlot()
 SecondPlot()
 

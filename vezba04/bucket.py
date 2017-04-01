@@ -12,6 +12,5 @@ def bucketSort(Arr):
      insertion.insertionSort(B[i])
    ArrSort = []
    for i in range(0,n):
-     ArrSort += B[i]
-     #print (B[i])   
+     ArrSort += B[i] 
    return ArrSort
