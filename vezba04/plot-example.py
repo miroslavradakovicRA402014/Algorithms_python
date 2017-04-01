@@ -62,8 +62,6 @@ def SecondPlot():
 
 
 
-
-
 # Profile functions and create plots
 
 FirstPlot()
@@ -71,3 +69,5 @@ SecondPlot()
 
 # Show plots
 ShowPlot()
+
+#Don't work on Linux
