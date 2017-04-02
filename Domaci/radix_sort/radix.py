@@ -1,6 +1,5 @@
-
 def maxDig(Arr):
-    num = maxNum(Arr)
+    num = max(Arr)
     return digNum(num)
 
 def digNum(Num):
@@ -9,14 +8,6 @@ def digNum(Num):
      dig += 1
      Num = Num//10
     return dig   
-
-def maxNum(Arr):
-    maxN = Arr[0]
-    n = len(Arr)
-    for i in range(1,n):
-      if maxN < Arr[i]:
-         maxN = Arr[i] 
-    return maxN
 
 def nDig(Num,n):
     return (Num%(10**n))//(10**(n-1))

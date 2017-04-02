@@ -1,7 +1,6 @@
 def nDig(Num,n):
     return (Num%(10**n))//(10**(n-1))
     
-
 def insertionSortDigit(Arr,dig):
     for j in range(0,len(Arr)):
      i = j-1

@@ -25,7 +25,7 @@ def ShowPlot():
     plt.show()    
    
 def FirstPlot():
-    algo_name = "Radix sort"
+    algo_name = "Selection sort"
     input_data = []
     exec_time = []
     Arr = []

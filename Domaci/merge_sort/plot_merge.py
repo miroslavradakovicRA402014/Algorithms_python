@@ -1,7 +1,7 @@
 import time
 import numpy as np
 import matplotlib.pyplot as plt
-import radix
+import mergesort
 
 def CreatePlot(input_data, exec_time, algo_name):
     fig = plt.figure()     
@@ -25,14 +25,14 @@ def ShowPlot():
     plt.show()    
    
 def FirstPlot():
-    algo_name = "Radix sort"
+    algo_name = "Merge sort"
     input_data = []
     exec_time = []
     Arr = []
     for n in range(100,1100,100):
        Arr = range(n,-1,-1)
        start_time = time.clock() 
-       radix.radixSort(Arr)
+       mergesort.mergeSort(Arr,0,len(Arr)-1)
        end_time = time.clock()
        exec_time.append((end_time - start_time)*1000)
        input_data.append(n)
