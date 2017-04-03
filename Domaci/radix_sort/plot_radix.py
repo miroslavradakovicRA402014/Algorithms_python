@@ -29,10 +29,12 @@ def FirstPlot():
     input_data = []
     exec_time = []
     Arr = []
+    B = []
     for n in range(100,1100,100):
        Arr = range(n,-1,-1)
+       B = range(n,-1,-1)
        start_time = time.clock() 
-       radix.radixSort(Arr)
+       radix.radixSort(Arr,B)
        end_time = time.clock()
        exec_time.append((end_time - start_time)*1000)
        input_data.append(n)

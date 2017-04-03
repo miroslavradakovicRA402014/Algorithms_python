@@ -10,21 +10,33 @@ def digNum(Num):
     return dig   
 
 def nDig(Num,n):
-    return (Num%(10**n))//(10**(n-1))
+    return int((Num/(10**(n-1)))%10)
     
 
-def insertionSortDigit(Arr,dig):
+#def insertionSortDigit(Arr,dig):
+#    for j in range(0,len(Arr)):
+#     i = j-1
+#     keyDig = nDig(Arr[j],dig)
+#     keyNum = Arr[j]; 
+#     while i >= 0 and keyDig < nDig(Arr[i],dig):
+#        Arr[i+1] = Arr[i]
+#        i -= 1
+#     Arr[i+1] = keyNum
+
+def countingSortDigit(Arr,B,k,dig):
+    C = []
+    for i in range(0,k):
+      C.append(0)
     for j in range(0,len(Arr)):
-     i = j-1
-     keyDig = nDig(Arr[j],dig)
-     keyNum = Arr[j]; 
-     while i >= 0 and keyDig < nDig(Arr[i],dig):
-        Arr[i+1] = Arr[i]
-        i -= 1
-     Arr[i+1] = keyNum
+      C[nDig(Arr[j],dig)] = C[nDig(Arr[j],dig)] + 1
+    for i in range(1,k):
+      C[i] = C[i] + C[i-1]
+    for j in range(len(Arr)-1,-1,-1):
+      C[nDig(Arr[j],dig)] = C[nDig(Arr[j],dig)] - 1    
+      B[C[nDig(Arr[j],dig)]] = Arr[j]
+    Arr[:] = B[:]  
 
-
-def radixSort(Arr):
+def radixSort(Arr,B):
     steps = maxDig(Arr)
     for i in range(0,steps):
-      insertionSortDigit(Arr,i+1)
+      countingSortDigit(Arr,B,10,i+1)
