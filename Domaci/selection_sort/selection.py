@@ -11,7 +11,7 @@ def minSearch(Arr,ind):
 def selectionSort(Arr):
    minInd = 0
    n = len(Arr)
-   for i in range(0,n):
+   for i in range(0,n-1):
      minInd = minSearch(Arr,i)
      if minInd != i:
        t = Arr[i]

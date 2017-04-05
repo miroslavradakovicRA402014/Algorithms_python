@@ -12,17 +12,6 @@ def digNum(Num):
 def nDig(Num,n):
     return int((Num/(10**(n-1)))%10)
     
-
-#def insertionSortDigit(Arr,dig):
-#    for j in range(0,len(Arr)):
-#     i = j-1
-#     keyDig = nDig(Arr[j],dig)
-#     keyNum = Arr[j]; 
-#     while i >= 0 and keyDig < nDig(Arr[i],dig):
-#        Arr[i+1] = Arr[i]
-#        i -= 1
-#     Arr[i+1] = keyNum
-
 def countingSortDigit(Arr,B,k,dig):
     C = []
     for i in range(0,k):
