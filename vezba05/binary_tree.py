@@ -1,4 +1,5 @@
 import class_example
+import random
 
 def printNode(node):
     print ("\nNode")
@@ -8,7 +9,7 @@ def addRight(root,right):
     root.right = right
     right.parent = root
     
-def addLeft(node,left):
+def addLeft(root,left):
     root.left = left   
     left.parent = root  
     
@@ -18,6 +19,12 @@ def inorderTreeWalk(node):
       inorderTreeWalk(node.left)
       printNode(node)
       inorderTreeWalk(node.right) 
+      
+def inorderTreeWalkInsert(node,l):
+    if node != None:
+      inorderTreeWalkInsert(node.left,l)
+      l.append(node.data.a1)
+      inorderTreeWalkInsert(node.right,l)      
       
 def treeSearch(node,key):
     if node == None or node.data.a1 == key:
@@ -49,18 +56,15 @@ def treeMaximum(root):
 def treeSuccesor(node):
     if node.right != None:
        return treeMinimum(node.right)
-    
-    par = node.parent
-    
+    par = node.parent    
     while par.parent != None and par.right == node:
           par = par.parent
           
     return par.data.a1   
     
 def treeInsert(root,node):
-
     y = None
-    x = root
+    x = root          
     while x != None:
       y = x
       if node.data.a1 < x.data.a1:
@@ -69,13 +73,14 @@ def treeInsert(root,node):
           x = x.right
     node.parent = y          
     if y == None:
-       root = z
+       node.parent = root
     elif node.data.a1 < y.data.a1:
        y.left = node
     else:
-       y.right = node              
-                                        
-
+       y.right = node   
+          
+          
+                                                                        
 def transplant(root,u,v):
     if u.parent == None:
        root = v
@@ -101,8 +106,13 @@ def treeDelete(root,node):
        y.left = node.left
        y.left.parent = y      
                          
-        
+def createNode(data):
+    nodeData = class_example.Data(data,str(data))
+    node = class_example.Node(None,None,None,nodeData)    
+    return node 
+           
 ##################################################################################################        
+'''
 rootData = class_example.Data(2,"2")
 root = class_example.Node(None,None,None,rootData)
 
@@ -115,7 +125,6 @@ rightNode = class_example.Node(None,None,None,rightNodeData)
 addRight(root,rightNode)
 addLeft(root,leftNode)
 
-'''
 inorderTreeWalk(root)
 node = iterativeTreeSearch(root,3)
 if node != None:
@@ -130,7 +139,6 @@ print ("Tree minmum ",treeMin.data.a1)
 
 succ = treeSuccesor(root)
 print (succ.data.a1)
-'''
 
 nodeData = class_example.Data(4,"4")
 node = class_example.Node(None,None,None,nodeData)
@@ -140,5 +148,23 @@ inorderTreeWalk(root)
 
 treeDelete(root,rightNode)
 inorderTreeWalk(root)
+'''
+n = 10
+l = []
+sl = []
 
+l.append(random.randint(0,100))
+treeRoot = createNode(l[0])
+
+for i in range(1,n):
+   l.append(random.randint(0,100))
+   node = createNode(l[i])
+   treeInsert(treeRoot,node)                
+                    
+print (l)
    
+inorderTreeWalkInsert(treeRoot,sl)
+
+print (sl)     
+
+
