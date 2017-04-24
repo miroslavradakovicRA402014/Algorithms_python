@@ -1,6 +1,10 @@
 import class_example
 import random
 
+class Tree:
+    def __init__ (self,r = None):
+      self.root = r
+
 def printNode(node):
     print ("\nNode")
     print ("Key :",node.data.a1)
@@ -62,9 +66,9 @@ def treeSuccesor(node):
           
     return par.data.a1   
     
-def treeInsert(root,node):
+def treeInsert(tree,node):
     y = None
-    x = root          
+    x = tree.root          
     while x != None:
       y = x
       if node.data.a1 < x.data.a1:
@@ -73,7 +77,7 @@ def treeInsert(root,node):
           x = x.right
     node.parent = y          
     if y == None:
-       node.parent = root
+       tree.root = node
     elif node.data.a1 < y.data.a1:
        y.left = node
     else:
@@ -81,9 +85,9 @@ def treeInsert(root,node):
           
           
                                                                         
-def transplant(root,u,v):
+def transplant(tree,u,v):
     if u.parent == None:
-       root = v
+       tree.root = v
     elif u == u.parent.left:
        u.parent.left = v
     else:
@@ -91,18 +95,18 @@ def transplant(root,u,v):
     if v != None:
        v.parent = u.parent 
        
-def treeDelete(root,node):
+def treeDelete(tree,node):
     if node.left == None:
-       transplant(root,node,node.right)
+       transplant(tree,node,node.right)
     elif node.right == None:
-       transplant(root,node,node.left)
+       transplant(tree,node,node.left)
     else: 
        y = treeMinimum(node.right)
        if y.parent != node:
-          transplant(root,y,y.right)
+          transplant(tree,y,y.right)
           y.right = node.right
           y.right.parent = y
-       transplant(root,node,y)
+       transplant(tree,node,y)
        y.left = node.left
        y.left.parent = y      
                          
@@ -152,7 +156,7 @@ inorderTreeWalk(root)
 n = 10
 l = []
 sl = []
-
+'''
 l.append(random.randint(0,100))
 treeRoot = createNode(l[0])
 
@@ -160,11 +164,20 @@ for i in range(1,n):
    l.append(random.randint(0,100))
    node = createNode(l[i])
    treeInsert(treeRoot,node)                
+'''
+
+treeRoot = Tree()
+
+for i in range(0,n):
+   l.append(random.randint(0,100))
+   node = createNode(l[i])
+   treeInsert(treeRoot,node)
                     
 print (l)
-   
-inorderTreeWalkInsert(treeRoot,sl)
-
+inorderTreeWalkInsert(treeRoot.root,sl)
 print (sl)     
+
+
+
 
 
