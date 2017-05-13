@@ -1,4 +1,5 @@
 import vertex_example
+time = 0
 
 class Graph:
 
@@ -100,18 +101,21 @@ def DFS(G):
     for u in G.graph:
         u.color = vertex_example.VertexColor.WHITE
         u.preview = None
+    global time
     time = 0
     for u in G.graph:
         if u.color == vertex_example.VertexColor.WHITE:
-            DFSvisit(G,u,time)
-def DFSvisit(G,u,time):
+            DFSvisit(G,u)
+def DFSvisit(G,u):
+    global time 
+    #print (time)
     time += 1
     u.data1 = time
     u.color = vertex_example.VertexColor.GRAY
     for v in u.adjacency:
         if v.color == vertex_example.VertexColor.WHITE:
             v.preview = u
-            DFSvisit(G,v,time)
+            DFSvisit(G,v)
     u.color = vertex_example.VertexColor.BLACK
     time += 1
     u.data2 = time  
