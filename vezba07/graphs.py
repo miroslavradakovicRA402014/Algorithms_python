@@ -58,7 +58,7 @@ class QueueList:
               print ("GRAY")
             else:
               print ("BLACK")  
-              
+ ########################################################################################             
 def BFS(G,s):
     for u in G.graph:
       if u.data1 != s.data1:
@@ -108,7 +108,6 @@ def DFS(G):
             DFSvisit(G,u)
 def DFSvisit(G,u):
     global time 
-    #print (time)
     time += 1
     u.data1 = time
     u.color = vertex_example.VertexColor.GRAY
@@ -123,7 +122,11 @@ def DFSvisit(G,u):
 def printTime(G):
     for v in G.graph:
        print ("Start time  ",v.data1)
-       print ("Finish time ",v.data2)               
+       print ("Finish time ",v.data2)        
+ 
+def printDistance(G):
+    for v in G.graph:
+       print ("Distance  to ",v.data1,"is",v.data2)              
                                                                                                   
 ########################################################################################
 graphList = []
@@ -208,7 +211,7 @@ queueV.dequeue()
 queueV.printQueue()
 '''
 
-'''
+
 vertexList.append(vertex_example.Vertex(c=vertex_example.VertexColor.WHITE, d2=0, d1='v'))
 vertexList.append(vertex_example.Vertex(c=vertex_example.VertexColor.WHITE, d2=1, d1='r'))
 vertexList.append(vertex_example.Vertex(c=vertex_example.VertexColor.WHITE, d2=2, d1='s'))
@@ -252,9 +255,10 @@ graph.addVertexAdjacent(7,vertexList[6])
 #graph.printGraphsVertexes()
 
 BFS(graph,vertexList[2])
-printPath(graph,vertexList[2],vertexList[4])
-'''
+printDistance(graph)
+#printPath(graph,vertexList[2],vertexList[4])
 
+'''
 vertexList.append(vertex_example.Vertex(c=vertex_example.VertexColor.WHITE, d2=0, d1='x'))
 vertexList.append(vertex_example.Vertex(c=vertex_example.VertexColor.WHITE, d2=1, d1='u'))
 vertexList.append(vertex_example.Vertex(c=vertex_example.VertexColor.WHITE, d2=2, d1='v'))
@@ -283,5 +287,5 @@ graph.addVertexAdjacent(5,vertexList[5])
 
 DFS(graph)   
 printTime(graph)
-
+'''
     
